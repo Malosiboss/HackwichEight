@@ -8,45 +8,67 @@
 import UIKit
 
 class ViewController: UIViewController {
+@IBOutlet weak var slider: UISlider!
+    
+@IBOutlet weak var targetLabel: UILabel!
+    
 
-    @IBOutlet weak var slider: UISlider!
+var currentValue = 0
     
-    //create a variable that can hold the value of the slider
-    var currentValue: Int = 0
+var targetValue = 0
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
+override func viewDidLoad()
+{
+super.viewDidLoad()
+// Do any additional setup after loading the view.
    
-    @IBAction func sliderHasMoved(_ sender: Any)
-    {
-        print("The value of the slider is:\(slider.value)")
-        currentValue = Int(slider.value)
-    }
+    slider.value = 50
     
-  
-    @IBAction func myGuessButtonPressed(_ sender: Any)
-    {
-        //5. new variable message that displays a message that includes currentValue
-        let message = "The value is: \(currentValue)"
-        
-        //1. create alert view
-        let alert = UIAlertController(title:"Hello World!", message: message, preferredStyle: .alert)
-        
-        //2. Button that user tapd to dismissview controlor
-        let action = UIAlertAction(title: "Awsome", style: .default, handler: nil)
-        
-        //3.add the button to alert view
-        alert.addAction(action)
-        
-        //4. present alertview on screen
-        present(alert, animated: true, completion: nil)
-        
-      
+    currentValue = Int(slider.value)
     
-    }
+    //targetValue = Int.random(in: 0...100)
     
-
+    //calling function
+    startNewRound()
+    
 }
 
+    
+@IBAction func sliderHasMoved(_ sender: Any) {
+
+   
+        
+    currentValue = Int(slider.value)
+    }
+    
+    func startNewRound(){
+        
+        targetValue = Int.random(in: 0...100)
+       
+        currentValue = Int(slider.value)
+        
+    }
+    
+    func updateTargetLabel(){
+        targetLabel.text = String(targetValue)
+    
+    }
+    
+    
+
+@IBAction func myGuessButtonPressed(_ sender: Any)
+{
+
+    let message = "The value is \(currentValue)" + "\nThe Target value is: \(targetValue)"
+
+    let alert = UIAlertController(title: "Hello World", message: message , preferredStyle: .alert)
+
+    let action = UIAlertAction(title: "Awesome", style: .default, handler: nil)
+    
+    alert.addAction(action)
+        
+    present(alert, animated: true, completion: nil)
+    
+    startNewRound()
+    }
+}
