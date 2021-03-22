@@ -62,11 +62,11 @@ super.viewDidLoad()
 @IBAction func myGuessButtonPressed(_ sender: Any)
 {
 
-    let message = "The value is \(currentValue)" + "\nThe Target value is: \(targetValue)"
+    let message = "The value is \(currentValue)" + "\nThe Target value for this round was: \(targetValue)"
 
-    let alert = UIAlertController(title: "Hello World", message: message , preferredStyle: .alert)
+    let alert = UIAlertController(title: "Guess the Number Game", message: message , preferredStyle: .alert)
 
-    let action = UIAlertAction(title: "Awesome", style: .default, handler: nil)
+    let action = UIAlertAction(title: "New Round", style: .default, handler: nil)
     
     alert.addAction(action)
         
