@@ -29,29 +29,32 @@ super.viewDidLoad()
     //targetValue = Int.random(in: 0...100)
     
     //calling function
+
     startNewRound()
     
+   
 }
 
     
 @IBAction func sliderHasMoved(_ sender: Any) {
 
+   currentValue = Int(slider.value)
    
-        
-    currentValue = Int(slider.value)
-    }
+}
     
     func startNewRound(){
         
         targetValue = Int.random(in: 0...100)
        
         currentValue = Int(slider.value)
+        updateTargetLabel()
         
     }
     
     func updateTargetLabel(){
         targetLabel.text = String(targetValue)
-    
+        
+       
     }
     
     
